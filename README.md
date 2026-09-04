@@ -93,7 +93,21 @@ The parserator `label` command will start a console labeling task, where you wil
   parserator train name_data/labeled/person_labeled.xml probablepeople --modelfile=person
   parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
   ```
-  
+
+  The trained `.crfsuite` files are committed to this repository, so installing the
+  package does **not** re-train them. Re-training is a deliberate act: regenerate the
+  models and commit the result.
+
+  Always pass a fixed `PYTHONHASHSEED`. `parserator` accumulates its training data in a
+  Python `set`, so without one, every run iterates that set in a different order and
+  converges on a different model. The committed models were built with:
+
+  ```
+  PYTHONHASHSEED=1 parserator train name_data/labeled/person_labeled.xml,name_data/labeled/company_labeled.xml probablepeople --modelfile=generic
+  PYTHONHASHSEED=1 parserator train name_data/labeled/person_labeled.xml probablepeople --modelfile=person
+  PYTHONHASHSEED=1 parserator train name_data/labeled/company_labeled.xml probablepeople --modelfile=company
+  ```
+
 ## Errors and Bugs
 
 If something is not behaving intuitively, it is a bug and should be reported.
