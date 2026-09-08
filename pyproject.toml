@@ -38,7 +38,8 @@ dev = ["pytest",
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=42", "wheel", "parserator", "probableparsing", "doublemetaphone"
+]
 build-backend = "setuptools.build_meta"
 
 
