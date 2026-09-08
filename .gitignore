@@ -55,6 +55,7 @@ docs/_static/
 docs/_templates/
 make.bat
 
+*.crfsuite
 #.csv
 .txt
 
